@@ -64,7 +64,16 @@ public class MainApps {
                     }
                 } else if (key.equals("topics")) {
                     AdminUtils.showAllTopicsName(client);
-                } else if (key.equals("help")) {
+                } else if (key.equals("create-topic")){
+                    System.out.print("topic name? ");
+                    String topicName = sc.nextLine().toLowerCase();
+                    System.out.print("partitions? ");
+                    int partitions = sc.nextInt();
+                    System.out.print("replication? ");
+                    short replicas = (short)sc.nextInt();
+                    AdminUtils.createTopic(client, topicName, partitions, replicas);
+                }
+                else if (key.equals("help")) {
                     System.out.println("controller - show controller node");
                     System.out.println("nodes - show all nodes");
                     System.out.println("broker [id] - show broker [id]'s config list");

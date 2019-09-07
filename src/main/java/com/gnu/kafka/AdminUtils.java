@@ -77,6 +77,20 @@ public class AdminUtils {
     }
 
     /**
+     *
+     * Topic을 생성한다
+     *
+     * @param client
+     * @param topicName topic이름
+     * @param partitions topic의 partition, 이 숫자는 전송 속도에 영향을 미친다.
+     * @param replicas topic의 복제본이 될 replica의 갯수, 이 숫자는 안정성에 영향을 미친다.
+     * @return
+     */
+    protected static CreateTopicsResult createTopic(AdminClient client, String topicName, int partitions, short replicas){
+        return client.createTopics(Arrays.asList(new NewTopic(topicName, partitions, replicas)));
+    }
+
+    /**
      * 특정 Topic의 전체 Config 정보를 보여준다
      *
      * @param client
